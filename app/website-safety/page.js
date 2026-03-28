@@ -59,7 +59,7 @@ export default function WebsiteSafetyPage() {
           <input
             id="url-input"
             type="url"
-            className="flex-1 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+            className="flex-1 p-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm shadow-inner transition-all"
             style={{
               background: "var(--bg-primary)",
               color: "var(--text-primary)",
@@ -75,9 +75,19 @@ export default function WebsiteSafetyPage() {
             id="check-safety-btn"
             onClick={handleCheck}
             disabled={loading || !url.trim()}
-            className="btn-glow px-6 py-3 rounded-xl text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+            className="btn-glow px-8 py-4 rounded-2xl text-sm font-bold tracking-wide shadow-lg text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
           >
-            {loading ? "Checking..." : "Check Safety"}
+            {loading ? (
+              <span className="flex items-center justify-center gap-3">
+                <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                Checking...
+              </span>
+            ) : (
+              "Check Safety"
+            )}
           </button>
         </div>
       </div>
