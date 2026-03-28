@@ -26,9 +26,13 @@ function basicChecks(url) {
       return { flagged: true, reason: "URL uses a non-standard protocol, which is unusual and suspicious." };
     }
 
-    // Prefer HTTPS
+    // Prefer HTTPS - strict rule to skip AI
     if (parsed.protocol === "http:") {
-      return { flagged: false, warning: "URL uses HTTP (not HTTPS), which is less secure." };
+      return { 
+        flagged: true, 
+        score: 30, 
+        reason: "Website does not use HTTPS, making it insecure for data transmission" 
+      };
     }
 
     // Suspiciously long hostname
@@ -78,7 +82,7 @@ export async function POST(req) {
     if (check.flagged) {
       return NextResponse.json({
         result: "Suspicious",
-        score: 10,
+        score: check.score || 10,
         reason: check.reason,
       });
     }

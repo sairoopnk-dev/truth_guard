@@ -75,23 +75,7 @@ export default function HomePage() {
           place.
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/fake-news"
-            id="cta-fake-news"
-            className="btn-glow rounded-xl px-8 py-3 text-sm font-semibold text-white"
-          >
-            Get Started →
-          </Link>
-          <a
-            href="#features"
-            id="cta-learn-more"
-            className="rounded-xl border px-8 py-3 text-sm font-semibold transition-colors hover:bg-white/5"
-            style={{ borderColor: "var(--border)", color: "var(--text-primary)" }}
-          >
-            Learn More
-          </a>
-        </div>
+
       </section>
 
       {/* Feature Cards */}
